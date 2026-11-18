@@ -1,0 +1,21 @@
+---
+const nav = [
+  { href: "#directions", label: "Послуги" },
+  { href: "#prices", label: "Ціни" },
+  { href: "#doctors", label: "Лікарі" },
+  { href: "#network", label: "Про мережу" },
+  { href: "#clinics", label: "Клініки" },
+];
+---
+<header class="hdr">
+  <div class="container hdr__in">
+    <a class="hdr__logo" href="#top">
+      <img src="logo.svg" alt="Giorno Dentale, мережа сімейних стоматологій — на початок сторінки" width="194" height="36" />
+    </a>
+    <nav class="hdr__nav" aria-label="Розділи сторінки" data-rec="UX-R003">
+      <ul>{nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}</ul>
+    </nav>
+    <button class="btn hdr__cta" type="button" popovertarget="sheet-call">Записатися</button>
+    <button class="btn btn--text hdr__menu" type="button" popovertarget="sheet-menu" aria-label="Меню розділів і контактів">Меню</button>
+  </div>
+</header>

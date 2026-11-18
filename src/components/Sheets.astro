@@ -1,0 +1,57 @@
+---
+import { CITIES, MESSENGERS, EMAIL, clinicsWord } from "../data/site";
+const nav = [
+  { href: "#directions", label: "Послуги" },
+  { href: "#prices", label: "Ціни" },
+  { href: "#doctors", label: "Лікарі" },
+  { href: "#network", label: "Про мережу" },
+  { href: "#clinics", label: "Клініки" },
+];
+---
+<div id="sheet-call" class="sheet" popover aria-labelledby="sheet-call-title">
+  <div class="sheet__top">
+    <p class="sheet__title" id="sheet-call-title">Оберіть місто</p>
+    <button class="sheet__close" type="button" popovertarget="sheet-call" popovertargetaction="hide">Закрити</button>
+  </div>
+  <ul class="sheet__list">
+    {CITIES.map((c) => (
+      <li>
+        <a class="sheet__row" href={`tel:${c.phone.tel}`}>
+          <span>
+            <span class="sheet__city">{c.name}</span><br />
+            <span class="sheet__meta">{c.clinics.length} {clinicsWord(c.clinics.length)}, {c.schedule}</span>
+          </span>
+          <span class="sheet__go">{c.phone.display}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+  <p class="sheet__note">Перша консультація — безкоштовно, лікування можна розстрочити.</p>
+</div>
+
+<div id="sheet-write" class="sheet" popover aria-labelledby="sheet-write-title">
+  <div class="sheet__top">
+    <p class="sheet__title" id="sheet-write-title">Написати нам</p>
+    <button class="sheet__close" type="button" popovertarget="sheet-write" popovertargetaction="hide">Закрити</button>
+  </div>
+  <ul class="sheet__list">
+    <li><a class="sheet__row" href={MESSENGERS.telegram} rel="noopener"><span class="sheet__city">Telegram</span><span class="sheet__go">Відкрити</span></a></li>
+    <li><a class="sheet__row" href={MESSENGERS.viber}><span class="sheet__city">Viber</span><span class="sheet__go">Відкрити</span></a></li>
+    <li><a class="sheet__row" href={`mailto:${EMAIL}`}><span class="sheet__city">E-mail</span><span class="sheet__go">{EMAIL}</span></a></li>
+  </ul>
+</div>
+
+<div id="sheet-menu" class="sheet" popover aria-label="Меню">
+  <div class="sheet__top">
+    <p class="sheet__title">Меню</p>
+    <button class="sheet__close" type="button" popovertarget="sheet-menu" popovertargetaction="hide">Закрити</button>
+  </div>
+  <nav class="sheet__nav" aria-label="Розділи сторінки">
+    <ul>{nav.map((n) => <li><a href={n.href} data-close-sheet>{n.label}</a></li>)}</ul>
+  </nav>
+  <div class="sheet__group">
+    {CITIES.map((c) => <a class="link" href={`tel:${c.phone.tel}`}>{c.name}: {c.phone.display}</a>)}
+    <a class="link" href={MESSENGERS.telegram} rel="noopener">Telegram</a>
+    <a class="link" href={MESSENGERS.viber}>Viber</a>
+  </div>
+</div>

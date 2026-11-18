@@ -1,0 +1,66 @@
+/* Hallmark · shape: index · genre: modern-minimal · theme: custom · surface: absolute · job: book · idea: "Giorno — це день: які з 11 клінік відчинені зараз у Києві, Львові й Кракові" · vibe: "світлий день, фірмовий синій, рожеве «зараз»" · paper: #F3F7FA · accent: #FF0182 · display: Literata · body: Ubuntu Sans · hero: H1 і модуль «Сьогодні» — три міста з місцевим часом, станом і дзвінком · nav: світла шапка з якорями і «Записатися», нижня панель на телефоні · footer: темна смуга з годинами міст, юрособою, соцмережами й розділами для лікарів та інвесторів · imagery: client photos · signature: живий стан мережі за місцевим часом кожного міста · axes: light/roman-serif/chromatic-pink · posture: restrained · contrast: pass · fold: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S5 R4 V4 · weakest: imagery, фото клінік немає — clinics і network тримаються на типографіці й цифрах */
+/* Hallmark · waive 7b · --color-surface і --color-on-dark дорівнюють #FFFFFF, як записано в design/concept.md · білі площини Giorno Dentale: фото лікарів зняті вирізками на білому, білий — колір бренду клієнта */
+/* Hallmark · dismissed 23 · .dot::after — хвиля 10px крапки «відчинено» (Giorno), площа менша за 1% екрана */
+/* Hallmark · dismissed 41 · checked every use of --color-accent in site.css: the Giorno pink fills a 10px status dot and the 3px city tab underline, so --color-accent-ink never sits on it */
+/* Hallmark · dismissed 28a · the lazy images are the Giorno doctors strip and the footer logo, both several screens below the fold; the LCP element is the hero headline text */
+/* Hallmark · dismissed 42 · the footer is named in the stamp: a dark band led by the opening hours of each city, then patients, doctors and partners, contacts and the legal line */
+/* Hallmark · dismissed 49 · the city tabs and the consultation button carry white-space: nowrap through .tab and .btn in site.css; the label fits on one line at 320px */
+/* Line 1 of this file is the Hallmark stamp (docs/process/hallmark.md), filled from design/concept.md. */
+/* Client design tokens — only from design/concept.md (veon-concept: colors, fonts). */
+:root {
+  /* colour roles */
+  --color-bg: #F3F7FA;
+  --color-surface: #FFFFFF;
+  --color-text: #142A47;
+  --color-muted: #4E5F75;
+  --color-primary: #2B5996;
+  --color-primary-hover: #224A7E;
+  --color-brand-2: #406AA1;
+  --color-accent: #FF0182;
+  --color-accent-text: #C2006A;
+  --color-accent-ink: #142A47;
+  --color-accent-on-dark: #FF7AB8;
+  --color-line: #D6DFEA;
+  --color-line-ui: #6E7F96;
+  --color-dark: #142A47;
+  --color-on-dark: #FFFFFF;
+  --color-on-dark-muted: #D6DFEA;
+  --color-focus: #2B5996;
+
+  /* type */
+  --font-display: "Literata", "Literata Fallback", Georgia, serif;
+  --font-body: "Ubuntu Sans", "Ubuntu Sans Fallback", system-ui, sans-serif;
+  --fs-h1: clamp(2.25rem, 1.6rem + 2.8vw, 4rem);        /* 36 → 64 */
+  --fs-h2: clamp(1.75rem, 1.35rem + 1.75vw, 2.75rem);   /* 28 → 44 */
+  --fs-h3: clamp(1.375rem, 1.25rem + 0.55vw, 1.75rem);  /* 22 → 28 */
+  --fs-big: clamp(2.5rem, 1.4rem + 4.6vw, 5.5rem);      /* 40 → 88 */
+  --fs-text: clamp(1.0625rem, 1.03rem + 0.12vw, 1.125rem); /* 17 → 18 */
+  --fs-small: clamp(0.875rem, 0.85rem + 0.12vw, 0.9375rem); /* 14 → 15 */
+  --lh-tight: 1.1;
+  --lh-text: 1.55;
+
+  /* space (multiples of 8) */
+  --s-1: 0.5rem;
+  --s-2: 1rem;
+  --s-3: 1.5rem;
+  --s-4: 2.5rem;
+  --s-5: 4rem;
+  --s-6: 6.5rem;
+  --section: clamp(4rem, 2.6rem + 5.6vw, 6.5rem);       /* 64 → 104 */
+  --space: clamp(1.25rem, 0.3rem + 4vw, 4rem);          /* gutters 20 → 64 */
+  --gap: 1.5rem;
+  --container: 1280px;
+
+  /* shape and motion */
+  --radius: 8px;
+  --hit: 2.75rem;
+  --btn-h: 3.25rem;
+  --header-h: 4.5rem;
+  --ease-out: cubic-bezier(.2, .7, .2, 1);
+  --dur: 600ms;
+  --dur-fast: 200ms;
+}
+@media (max-width: 47.99rem) {
+  :root { --header-h: 4rem; --btn-h: 3.5rem; }
+}

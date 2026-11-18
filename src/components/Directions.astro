@@ -1,0 +1,41 @@
+---
+import FutureLink from "./FutureLink.astro";
+import Arrow from "./Arrow.astro";
+// Patient-language entry points; «що робимо» — from company.products_services.
+const rows = [
+  { problem: "Перевірити зуби", what: "Панорамний знімок, комп'ютерна томографія, прицільний знімок" },
+  { problem: "Відновити зуб", what: "Коронки, вкладки, вініри, художня реставрація" },
+  { problem: "Поставити імплант", what: "Bauers, Neodent, MegaGen, Straumann; імплантація за 1 день, синус-ліфтинг" },
+  { problem: "Замінити кілька зубів", what: "Незнімні протези на 4 і 6 імплантах, знімні й бюгельні протези" },
+  { problem: "Вирівняти зуби", what: "Брекети, елайнери Invisalign, CristaLine, Easy Align" },
+  { problem: "Почистити й відбілити", what: "Професійна гігієна і відбілювання" },
+  { problem: "Лікувати дитину", what: "Дитяча стоматологія і дитяча ортодонтія" },
+  { problem: "Кровоточать ясна", what: "Лікування ясен (пародонтологія)" },
+  { problem: "Складне лікування каналів", what: "Лікування під дентальним мікроскопом" },
+];
+---
+<section id="directions" class="section" aria-labelledby="directions-title">
+  <div class="container dir__grid">
+    <div class="dir__intro">
+      <h2 id="directions-title">Що вас турбує сьогодні?</h2>
+      <p class="section__lead">Не знаєте, з чого почати, — перша консультація безкоштовна.</p>
+    </div>
+    <ul class="dir__list">
+      <li class="dir__item dir__urgent">
+        <div>
+          <h3>Болить зуб</h3>
+          <p class="dir__what">Терапія, а якщо зуб не зберегти, — видалення</p>
+        </div>
+        <button class="btn btn--primary" type="button" popovertarget="sheet-call">Подзвонити в клініку</button>
+      </li>
+      {rows.map((r) => (
+        <li class="dir__item">
+          <FutureLink note="Розділ у розробці" class="dir__row">
+            <span class="dir__text"><span class="dir__problem">{r.problem}</span><span class="dir__what">{r.what}</span></span>
+            <Arrow class="dir__arrow" />
+          </FutureLink>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

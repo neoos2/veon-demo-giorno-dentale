@@ -1,0 +1,48 @@
+---
+import { CITIES, MESSENGERS, EMAIL, mapUrl, clinicsWord } from "../data/site";
+---
+<section id="clinics" class="section" aria-labelledby="clinics-title">
+  <div class="container">
+    <div class="section__head">
+      <h2 id="clinics-title">Клініки й години</h2>
+      <p class="section__lead">Оберіть місто: адреси, графік і стан просто зараз.</p>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Місто">
+      {CITIES.map((c, i) => (
+        <button class="tab" type="button" role="tab" id={`tab-${c.id}`} aria-controls={c.id} aria-selected={i === 0 ? "true" : "false"} tabindex={i === 0 ? 0 : -1}>
+          {c.name}<span>{c.clinics.length}</span>
+        </button>
+      ))}
+      <span class="tabs__bar" aria-hidden="true"></span>
+    </div>
+    {CITIES.map((c) => (
+      <div class="panel" id={c.id} role="tabpanel" aria-labelledby={`tab-${c.id}`} tabindex="0">
+        <h3 class="panel__city">{c.name}</h3>
+        <div class="clinics__grid">
+          <ul class="addr">
+            {c.clinics.map((k, i) => (
+              <li class="addr__row" data-live-clinic={`${c.id}-${i}`}>
+                <div>
+                  <p class="addr__street">{k.street}</p>
+                  {k.landmark && <p class="addr__where">{k.landmark}</p>}
+                  <p class="addr__state"><span class="dot" aria-hidden="true"></span><span data-state>{k.schedule}</span></p>
+                </div>
+                <a class="link addr__map" href={mapUrl(k.mapQuery)} rel="noopener">На карті<span class="visually-hidden">: {k.street}</span></a>
+              </li>
+            ))}
+          </ul>
+          <div class="contact">
+            <p class="muted small">{c.clinics.length} {clinicsWord(c.clinics.length)} {c.inName}, один номер для всіх</p>
+            <a class="contact__phone" href={`tel:${c.phone.tel}`}>{c.phone.display}</a>
+            <div class="contact__links">
+              <a class="link" href={MESSENGERS.telegram} rel="noopener">Telegram</a>
+              <a class="link" href={MESSENGERS.viber}>Viber</a>
+              <a class="link" href={`mailto:${EMAIL}`}>{EMAIL}</a>
+            </div>
+            <button class="btn btn--primary" type="button" popovertarget="sheet-call">Записатися</button>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,36 @@
+---
+import { CITIES, clinicsWord } from "../data/site";
+import Clock from "./Clock.astro";
+const h1 = "Giorno Dentale — 11\u00a0стоматологій у Києві, Львові та Кракові";
+---
+<section id="hero" class="hero" data-rec="UX-R001,B-R002,MA-R004" aria-labelledby="hero-title">
+  <div class="container">
+    <div class="hero__head">
+      <h1 id="hero-title" data-rec="SE-R006">{h1}</h1>
+      <div class="hero__side">
+      <p class="hero__lead">Перша консультація — безкоштовно, лікування можна розстрочити.</p>
+      <div class="hero__actions">
+        <button class="btn btn--primary" type="button" popovertarget="sheet-call">Записатися</button>
+        <button class="btn btn--text" type="button" popovertarget="sheet-write">Написати в месенджер</button>
+      </div>
+      </div>
+    </div>
+    <div class="today">
+      <ul class="today__list">
+        {CITIES.map((c) => (
+          <li class="city" data-live-city={c.id}>
+            <a class="city__link" href={`tel:${c.phone.tel}`}>
+              <span class="city__head"><span class="city__name">{c.name}</span><span class="city__country">{c.country}</span></span>
+              <Clock tz={c.timeZone} fallback="9–20" class="city__time" />
+              <span class="city__state"><span class="dot" aria-hidden="true"></span><span data-state>{c.schedule}</span></span>
+              <span class="city__count" data-count>{c.clinics.length} {clinicsWord(c.clinics.length)}</span>
+              <span class="visually-hidden">, подзвонити:</span>
+              <span class="city__phone">{c.phone.display}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="today__note small muted">Стан і місцевий час — за графіком клінік. У святкові дні уточнюйте телефоном.</p>
+    </div>
+  </div>
+</section>

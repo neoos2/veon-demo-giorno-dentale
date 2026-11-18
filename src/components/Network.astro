@@ -1,0 +1,29 @@
+---
+import FutureLink from "./FutureLink.astro";
+import { CITIES, clinicsWord } from "../data/site";
+---
+<section id="network" class="section network on-dark" data-rec="B-R007" aria-labelledby="network-title">
+  <div class="container network__grid">
+    <div>
+      <h2 id="network-title">11 клінік, одна мережа</h2>
+      <ul class="network__cities">
+        {CITIES.map((c) => (
+          <li class="network__city">
+            <span class="num">{c.clinics.length}</span>
+            <span class="network__cname">{clinicsWord(c.clinics.length)} {c.inName}<span>{c.country}</span></span>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div class="network__facts">
+      <dl>
+        <div><dt>47 лікарів</dt><dd>Профілі лікарів у Києві, Львові й Кракові: терапевти, хірурги-імплантологи, ортопеди, ортодонти.</dd></div>
+        <div><dt>Імпланти від 5 500 грн</dt><dd>Шість систем: Bauers, Neodent, MegaGen, Straumann, B&amp;B, Bicon.</dd></div>
+        <div><dt>Діагностика й точність</dt><dd>Комп'ютерна томографія, цифрове сканування, дентальні мікроскопи.</dd></div>
+        <div><dt>Навчальний центр Giorno</dt><dd>Курси з ортодонтії, імплантології й ендодонтії, майстер-класи для стоматологів. <FutureLink note="Розділ у розробці">Про навчальний центр</FutureLink></dd></div>
+        <div><dt class="network__free">Перша консультація безкоштовно</dt><dd>Лікування можна оплачувати частинами.</dd></div>
+      </dl>
+      <p class="network__data">За даними компанії: 50 158 пацієнтів, 20 864 встановлені імпланти.</p>
+    </div>
+  </div>
+</section>

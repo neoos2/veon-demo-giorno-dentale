@@ -1,0 +1,40 @@
+---
+import FutureLink from "./FutureLink.astro";
+// Doctors from the Kyiv tab of the client's homepage (UX-F004); photos — the client's own (site/public, WebP).
+const doctors = [
+  { slug: "elenskyi", name: "Єленський Віктор Юрійович", years: 18, spec: "Головний лікар, стоматолог-ортопед, лікар вищої категорії" },
+  { slug: "pavlenko", name: "Павленко Максим Олексійович", years: 20, spec: "Хірург, імплантолог, ортопед, доцент кафедри стоматології" },
+  { slug: "blashnikova", name: "Блашнікова (Герасименко) Ганна Сергіївна", years: 20, spec: "Терапевт, ендодонтист, ортопед" },
+  { slug: "tyshchenko", name: "Тищенко Сергій Сергійович", years: 16, spec: "Хірург, імплантолог, ортопед, член Асоціації імплантологів України" },
+  { slug: "romanova", name: "Романова Наталія Миколаївна", years: 12, spec: "Терапевт, пародонтолог" },
+];
+---
+<section id="doctors" class="section doctors" aria-labelledby="doctors-title">
+  <div class="container">
+    <div class="section__head">
+      <h2 id="doctors-title">Хто вас прийме</h2>
+      <p class="section__lead">Лікарі київських клінік мережі.</p>
+    </div>
+    <ul class="doctors__strip" data-rec="SP-R001,SE-R008">
+      {doctors.map((d) => (
+        <li class="doc">
+          <img
+            src={`doctor-${d.slug}-280.webp`}
+            srcset={`doctor-${d.slug}-280.webp 280w, doctor-${d.slug}-520.webp 520w`}
+            sizes="(min-width: 1280px) 240px, (min-width: 1024px) 18vw, (min-width: 768px) 40vw, 72vw"
+            width="280" height="297" loading="lazy" decoding="async"
+            alt={`${d.name}, фото лікаря`}
+          />
+          <p class="doc__years"><span class="small muted">понад</span><span class="num">{d.years}</span><span class="small muted">років досвіду</span></p>
+          <h3>{d.name}</h3>
+          <p class="doc__spec">{d.spec}</p>
+        </li>
+      ))}
+    </ul>
+    <div class="doctors__foot">
+      <FutureLink note="Розділ у розробці">Усі 47 лікарів у Києві, Львові й Кракові</FutureLink>
+      <FutureLink note="Розділ у розробці">Відгуки пацієнтів</FutureLink>
+      <button class="btn" type="button" popovertarget="sheet-call">Записатися</button>
+    </div>
+  </div>
+</section>

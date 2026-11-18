@@ -1,0 +1,30 @@
+---
+import FutureLink from "./FutureLink.astro";
+import Clock from "./Clock.astro";
+import { MESSENGERS, EMAIL } from "../data/site";
+---
+<section id="abroad" class="abroad" aria-labelledby="abroad-title">
+  <div class="container abroad__grid">
+    <div class="abroad__time" data-live-city="krakow">
+      <p>Краків, зараз</p>
+      <Clock tz="Europe/Warsaw" fallback="9–20" />
+      <p class="small muted">Дві клініки мережі в Польщі.</p>
+    </div>
+    <div class="abroad__body">
+      <h2 id="abroad-title">Краків — на годину раніше</h2>
+      <p>Лікування для пацієнтів з Європи, Великої Британії, Канади й США — у Кракові або в Україні.</p>
+      <ul class="abroad__list">
+        <li>План і вартість до початку лікування</li>
+        <li>Допомога з квитками і готелем, трансфер</li>
+        <li>Запрошення для візи</li>
+        <li>Англомовний персонал</li>
+      </ul>
+      <div class="abroad__actions">
+        <a class="btn" href="#krakow">Клініки в Кракові</a>
+        <a class="link" href={MESSENGERS.telegram} rel="noopener">Telegram</a>
+        <a class="link" href={`mailto:${EMAIL}`}>{EMAIL}</a>
+        <FutureLink note="Розділ у розробці">English / Polski</FutureLink>
+      </div>
+    </div>
+  </div>
+</section>

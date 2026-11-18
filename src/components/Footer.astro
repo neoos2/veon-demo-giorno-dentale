@@ -1,0 +1,57 @@
+---
+import FutureLink from "./FutureLink.astro";
+import { CITIES, SOCIALS, EMAIL, LEGAL_NAME, MESSENGERS } from "../data/site";
+const hours = [
+  { city: "Київ", text: "щодня, 9:00–20:00" },
+  { city: "Львів", text: "пн–сб, 9:00–20:00" },
+  { city: "Краків", text: "9:00–20:00, дні за адресою" },
+];
+---
+<footer class="ftr on-dark">
+  <div class="container">
+    <ul class="ftr__hours" aria-label="Години роботи">
+      {hours.map((h) => <li>{h.city}<span>{h.text}</span></li>)}
+    </ul>
+    <div class="ftr__grid">
+      <div class="ftr__brand">
+        <a href="#top" class="hdr__logo"><img src="logo-light.svg" alt="Giorno Dentale — на початок сторінки" width="194" height="36" loading="lazy" /></a>
+        <p class="small">Мережа сімейних стоматологій у Києві, Львові та Кракові.</p>
+      </div>
+      <nav class="ftr__col" aria-labelledby="ftr-patients">
+        <h2 id="ftr-patients">Пацієнтам</h2>
+        <ul>
+          <li><FutureLink note="Розділ у розробці">Про мережу</FutureLink></li>
+          <li><FutureLink note="Розділ у розробці">Гарантія</FutureLink></li>
+          <li><FutureLink note="Розділ у розробці">Відгуки</FutureLink></li>
+          <li><FutureLink note="Розділ у розробці">Пацієнтам з-за кордону</FutureLink></li>
+        </ul>
+      </nav>
+      <nav class="ftr__col" aria-labelledby="ftr-pros" data-rec="UX-R008">
+        <h2 id="ftr-pros">Лікарям і партнерам</h2>
+        <ul>
+          <li><FutureLink note="Розділ у розробці">Навчальний центр</FutureLink></li>
+          <li><FutureLink note="Розділ у розробці">Франчайзинг</FutureLink></li>
+          <li><FutureLink note="Розділ у розробці">Вакансії</FutureLink></li>
+        </ul>
+      </nav>
+      <div class="ftr__col">
+        <h2>Контакти</h2>
+        <ul>
+          {CITIES.map((c) => <li><a href={`tel:${c.phone.tel}`}>{c.name}: {c.phone.display}</a></li>)}
+          <li><a href={`mailto:${EMAIL}`}>{EMAIL}</a></li>
+          <li><a href={MESSENGERS.telegram} rel="noopener">Telegram</a></li>
+          <li><a href={MESSENGERS.viber}>Viber</a></li>
+          {SOCIALS.map((s) => <li><a href={s.url} rel="noopener">{s.name}</a></li>)}
+        </ul>
+      </div>
+    </div>
+    <div class="ftr__legal">
+      <p>{LEGAL_NAME}</p>
+      <div class="ftr__legal-links">
+        <FutureLink note="Розділ у розробці">Політика конфіденційності</FutureLink>
+        <FutureLink note="Розділ у розробці">Публічна оферта</FutureLink>
+      </div>
+      <p>Самолікування може бути шкідливим для вашого здоров'я.</p>
+    </div>
+  </div>
+</footer>

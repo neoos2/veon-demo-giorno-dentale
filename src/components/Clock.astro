@@ -1,0 +1,6 @@
+---
+// Live local time of a city (filled by src/scripts/live.ts). Without JS it shows the opening hours instead.
+interface Props { tz: string; fallback: string; class?: string; }
+const { tz, fallback, class: cls } = Astro.props;
+---
+<span class:list={["clock num", cls]} data-clock={tz} aria-hidden="true">{fallback}</span>

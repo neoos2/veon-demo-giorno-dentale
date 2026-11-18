@@ -1,0 +1,9 @@
+---
+// A price with an optional old price (promo). Numbers are formatted with a thin space: «12 150».
+interface Props { now: string; old?: string; unit?: string; free?: boolean; }
+const { now, old, unit = "грн", free } = Astro.props;
+---
+<span class="plist__price">
+  {old && <><s>{old}</s><span class="visually-hidden"> грн, за акцією </span></>}
+  <span class={free ? "plist__free" : undefined}>{now}</span> {unit}
+</span>
